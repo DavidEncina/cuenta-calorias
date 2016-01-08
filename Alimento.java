@@ -29,7 +29,7 @@ public class Alimento
         this.gramosProteinas = gramosProteinas;
         this.gramosCarbohidratos = gramosCarbohidratos;
         this.gramosGrasas = gramosGrasas;         
-        if (gramosProteinas >= 0 && gramosCarbohidratos >= 0 && gramosGrasas >= 0 && gramosProteinas < 100 && gramosCarbohidratos < 100 && gramosGrasas < 100) {
+        if (gramosProteinas >= 0 && gramosCarbohidratos >= 0 && gramosGrasas >= 0) {
             calorias = (gramosProteinas * 4) + (gramosCarbohidratos * 4) + (gramosGrasas * 9);
         }        
         if (gramosProteinas >= gramosCarbohidratos && gramosProteinas >= gramosGrasas) {
@@ -67,8 +67,6 @@ public class Alimento
     /**
      * Metodo que nos enseña por pantalla el alimento y las proteinas, carbohidratos y grasas de este.
      * Ademas tambien muestra sus calorias y componentes mayoritarios.
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
      */
     public void muestraDatos(String nombreAlimento)
     {
@@ -78,5 +76,37 @@ public class Alimento
         System.out.println("Grasas por cada 100 gramos: " + gramosGrasas);
         System.out.println("Calorias: " + calorias);
         System.out.println("Componente/s mayoritario/s: " + macronutriente);
+    }
+    
+    /**
+     * Devuelve las Proteinas
+     */
+    public float getProteinas()
+    {
+        return gramosProteinas;
+    }
+    
+    /**
+     * Devuelve los carbohidratos
+     */
+    public float getCarbohidratos()
+    {
+        return gramosCarbohidratos;
+    }
+    
+    /**
+     * Devuelve las grasas
+     */
+    public float getGrasas()
+    {
+        return gramosGrasas;
+    }
+    
+    /**
+     * Devuelve las Calorias
+     */
+    public float getCalorias()
+    {
+        return calorias;
     }
 }
