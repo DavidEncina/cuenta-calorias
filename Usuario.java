@@ -46,10 +46,56 @@ public class Usuario
      */
     public void mostrarDatos()
     {
+        float totalNutrientes = (proteinas + grasas + carbohidratos) / 100;
+        String datosProteinas = "Gramos totales de proteinas ingeridos:     " + proteinas;
+        String datosCarbohidratos = "Gramos totales de carbohidratos ingeridos: " + carbohidratos;
+        String datosGrasas = "Gramos totales de grasas ingeridos:        " + grasas;
+        if (proteinas > 0) {
+            datosProteinas = datosProteinas + " (" + proteinas / totalNutrientes + "%)";
+        }
+        if (carbohidratos > 0) {
+            datosCarbohidratos = datosCarbohidratos + " (" + carbohidratos / totalNutrientes + "%)";
+        }
+        if (grasas > 0) {
+            datosGrasas = datosGrasas + " (" + grasas / totalNutrientes + "%)";
+        }
+                
         System.out.println("Nombre: " + nombreUsuario);
         System.out.println("Gramos totales de proteinas ingeridos: "+ proteinas);
         System.out.println("Gramos totales de carbohidratos ingeridos: "+ carbohidratos);
         System.out.println("Gramos totales de grasas ingeridos: "+ grasas);
         System.out.println("Calorias totales ingeridas: "+ calorias);
+    }
+    
+    /**
+     * Devuelve el nombre del usuario.
+     */
+    public String getNombre()
+    {
+        return nombreUsuario;
+    }
+    
+    /**
+     * Devuelve las calorias que ha consumido el usuario.
+     */
+    public float getCalorias()
+    {
+        return calorias;
+    }
+       
+    /**
+     * Metodo para comparar la ingesta de calorías entre dos usuarios.
+     */
+    public void compararCalorias (Usuario usuarioAComparar)
+    {
+       if (calorias > usuarioAComparar.getCalorias()){
+           System.out.println(nombreUsuario + " ha consumido más calorias que " + usuarioAComparar.getNombre() + " (" + calorias + " frente a " + usuarioAComparar.getCalorias() + ")");
+       }
+       else if (calorias < usuarioAComparar.getCalorias()){
+           System.out.println(usuarioAComparar.getNombre() + " ha consumido más calorias que " + nombreUsuario + " (" + usuarioAComparar.getCalorias() + " frente a " + calorias + ")");
+       }
+       else {
+           System.out.println(nombreUsuario + " ha consumido las mismas calorias que " + usuarioAComparar.getNombre() + " (" + calorias + " igual a " + usuarioAComparar.getCalorias() + ")");
+       } 
     }
 }
