@@ -18,9 +18,7 @@ public class Usuario
     //Guarda la cantidad total de calorias que ha comido el usuario
     private float calorias;
     //
-    private float masCalorias;
-    //
-    private String nombreAlimento;
+    private Alimento masCalorias;
 
     /**
      * Constructor for objects of class Usuario
@@ -32,7 +30,7 @@ public class Usuario
         carbohidratos = 0;
         grasas = 0;
         calorias = 0;
-        nombreAlimento = null;
+        masCalorias = null;
     }
 
     /**
@@ -40,17 +38,21 @@ public class Usuario
      */
     public void comer(Alimento nombreAlimento, float gramosAlimento)
     {
-      proteinas = proteinas + ((nombreAlimento.getProteinas()/100)*gramosAlimento);
-      carbohidratos = carbohidratos + ((nombreAlimento.getCarbohidratos()/100)*gramosAlimento);
-      grasas = grasas + ((nombreAlimento.getGrasas()/100)*gramosAlimento);
-      calorias = calorias + ((nombreAlimento.getCalorias()/100)*gramosAlimento);
-      
-      if (calorias <= nombreAlimento.getCalorias()) {
-          calorias = nombreAlimento.getCalorias();
-          nombreAlimento = nombreAlimento.getNombreAlimento();
-      }
+        proteinas = proteinas + ((nombreAlimento.getProteinas()/100)*gramosAlimento);
+        carbohidratos = carbohidratos + ((nombreAlimento.getCarbohidratos()/100)*gramosAlimento);
+        grasas = grasas + ((nombreAlimento.getGrasas()/100)*gramosAlimento);
+        calorias = calorias + ((nombreAlimento.getCalorias()/100)*gramosAlimento);
+
+        if (masCalorias != null) {
+            if (masCalorias.getCalorias() <= nombreAlimento.getCalorias()) {
+                masCalorias = nombreAlimento;
+            }
+        }
+        else {
+                masCalorias = nombreAlimento;
+        }
     }
-    
+
     /**
      * Muestra por pantalla la informacion de lo que ha comido el usuario.
      */
@@ -69,14 +71,14 @@ public class Usuario
         if (grasas > 0) {
             datosGrasas = datosGrasas + " (" + grasas / totalNutrientes + "%)";
         }
-                
+
         System.out.println("Nombre: " + nombreUsuario);
         System.out.println("Gramos totales de proteinas ingeridos: "+ proteinas);
         System.out.println("Gramos totales de carbohidratos ingeridos: "+ carbohidratos);
         System.out.println("Gramos totales de grasas ingeridos: "+ grasas);
         System.out.println("Calorias totales ingeridas: "+ calorias);
     }
-    
+
     /**
      * Devuelve el nombre del usuario.
      */
@@ -84,7 +86,7 @@ public class Usuario
     {
         return nombreUsuario;
     }
-    
+
     /**
      * Devuelve las calorias que ha consumido el usuario.
      */
@@ -92,28 +94,33 @@ public class Usuario
     {
         return calorias;
     }
-       
+
     /**
      * Metodo para comparar la ingesta de calorías entre dos usuarios.
      */
     public void compararCalorias (Usuario usuarioAComparar)
     {
-       if (calorias > usuarioAComparar.getCalorias()){
-           System.out.println(nombreUsuario + " ha consumido más calorias que " + usuarioAComparar.getNombre() + " (" + calorias + " frente a " + usuarioAComparar.getCalorias() + ")");
-       }
-       else if (calorias < usuarioAComparar.getCalorias()){
-           System.out.println(usuarioAComparar.getNombre() + " ha consumido más calorias que " + nombreUsuario + " (" + usuarioAComparar.getCalorias() + " frente a " + calorias + ")");
-       }
-       else {
-           System.out.println(nombreUsuario + " ha consumido las mismas calorias que " + usuarioAComparar.getNombre() + " (" + calorias + " igual a " + usuarioAComparar.getCalorias() + ")");
-       } 
+        if (calorias > usuarioAComparar.getCalorias()){
+            System.out.println(nombreUsuario + " ha consumido más calorias que " + usuarioAComparar.getNombre() + " (" + calorias + " frente a " + usuarioAComparar.getCalorias() + ")");
+        }
+        else if (calorias < usuarioAComparar.getCalorias()){
+            System.out.println(usuarioAComparar.getNombre() + " ha consumido más calorias que " + nombreUsuario + " (" + usuarioAComparar.getCalorias() + " frente a " + calorias + ")");
+        }
+        else {
+            System.out.println(nombreUsuario + " ha consumido las mismas calorias que " + usuarioAComparar.getNombre() + " (" + calorias + " igual a " + usuarioAComparar.getCalorias() + ")");
+        } 
     }
-    
+
     /**
-     * 
+     * Permite visualizar por pantalla el nombre del alimento más calórico por cada 100 gramos consumido hasta ahora por un usuario.
      */
     public void alimentoMasCalorico()
     {
-        System.out.println("Alimento más calórico ingerido por este usuario hasta el momento: " + nombreAlimento + " (" + masCalorias + " calorias por cada 100 gramos)");
+        if (masCalorias != null) {
+            System.out.println("Alimento más calórico ingerido por este usuario hasta el momento: " + masCalorias + " (" + masCalorias.getCalorias() + " calorias por cada 100 gramos)");
+        }
+        else {
+            System.out.println("Aun no ha ingerido alimentos");
+        }
     }  
- }
+}
