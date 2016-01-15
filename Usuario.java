@@ -128,19 +128,39 @@ public class Usuario
             System.out.println("Aun no ha ingerido alimentos");
         }
     }
-    
+
     /**
      * Permite visualizar por pantalla los datos nutricionales del alimento que el usuario ha comido en una determinada posición.
      */
     public void verDatosNutricionales(int index)
     {
         if ((index >= 1) && (index <= listaAlimentosIngeridos.size())) {
-            int cambioDeIndice = index - 1;
-            Alimento alimentoParaMostrar = listaAlimentosIngeridos.get(cambioDeIndice);
-            alimentoParaMostrar.muestraDatos();
+            Alimento alimentoParaMostrar = listaAlimentosIngeridos.get(index - 1);
+            alimentoParaMostrar.muestraDatos();            
+            //listaAlimentosIngeridos.get(index - 1).muestraDatos();
         }
         else {
             System.out.println("El indice introducido no es valido");
+        }
+    }
+
+    /**
+     *  Permite pasar como parámetro el nombre de un alimento e indique si el usuario ha comido ese alimento más de una vez o no.
+     *  Si lo ha hecho, cuántas veces lo ha hecho.
+     */
+    public void seHaComidoElAlimento(String nombreAlimento)
+    {
+        int contador = 0;
+        for (Alimento alimentoQueBusco : listaAlimentosIngeridos) {
+            if (alimentoQueBusco.getNombreAlimento().contains(nombreAlimento)) {
+                contador++;
+            }
+        }
+        if (contador > 0) {
+            System.out.println("El usuario ha comido el alimento " + nombreAlimento + " " + contador + " vez/veces");
+        }
+        else {
+            System.out.println("El usuario no ha comido el alimento " + nombreAlimento);
         }
     }
 }

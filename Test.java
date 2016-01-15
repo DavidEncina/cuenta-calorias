@@ -73,5 +73,23 @@ public class Test
         usuario1.verDatosNutricionales(1);
         usuario1.verDatosNutricionales(2);
         usuario1.verDatosNutricionales(3);
-    }        
+    }
+    
+    /**
+     * Constructor for objects of class Test
+     */
+    public void TestHaComidoAlimento()
+    {
+        Alimento alimento1 = new Alimento("pan", 1, 1, 1);
+        Alimento alimento2 = new Alimento("vino", 2, 2, 2);
+        Usuario usuario1 = new Usuario("pepe");
+        
+        usuario1.comer(alimento2, 1);
+        usuario1.comer(alimento2, 1);
+        usuario1.comer(alimento1, 1);
+        
+        usuario1.seHaComidoElAlimento("pan");
+        usuario1.seHaComidoElAlimento("ajo");
+        usuario1.seHaComidoElAlimento("vino");
+    }
 }
