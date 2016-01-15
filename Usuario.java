@@ -156,11 +156,25 @@ public class Usuario
                 contador++;
             }
         }
-        if (contador > 0) {
-            System.out.println("El usuario ha comido el alimento " + nombreAlimento + " " + contador + " vez/veces");
+        if (contador == 1) {
+            System.out.println("El usuario ha comido el alimento " + nombreAlimento + " " + " 1 vez");
+        }
+        else if (contador > 1) {
+            System.out.println("El usuario ha comido el alimento " + nombreAlimento + " " + contador + " veces");
         }
         else {
             System.out.println("El usuario no ha comido el alimento " + nombreAlimento);
+        }
+    }
+    
+    /**
+     * Informa de los nombres de aquellos alimentos que el usuario ha consumido más de una vez, en caso de que los haya.
+     */
+    public void queHaConsumidoVariasVeces()
+    {
+        int contador = 0;
+        for (Alimento comidoVariasVeces : listaAlimentosIngeridos) {
+            if (
         }
     }
 }
