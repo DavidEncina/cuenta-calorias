@@ -174,7 +174,9 @@ public class Usuario
     {
         int contador = 0;
         for (Alimento comidoVariasVeces : listaAlimentosIngeridos) {
-            if (
+            if (comidoVariasVeces.seHaComidoElAlimento().contains("veces")) {
+                System.out.println("El usuario ha comido el alimento " + nombreAlimento + " mas de una vez");
+            }
         }
     }
 }
