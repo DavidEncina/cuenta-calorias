@@ -68,7 +68,7 @@ public class Alimento
      * Metodo que nos enseña por pantalla el alimento y las proteinas, carbohidratos y grasas de este.
      * Ademas tambien muestra sus calorias y componentes mayoritarios.
      */
-    public void muestraDatos(String nombreAlimento)
+    public void muestraDatos()
     {
         System.out.println("Nombre: " + nombreAlimento);
         System.out.println("Proteinas por cada 100 gramos: " + gramosProteinas);

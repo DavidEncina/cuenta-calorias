@@ -16,13 +16,13 @@ public class Test
     {
         Alimento alimento1 = new Alimento("pan", 1, 1, 1);
         Alimento alimento2 = new Alimento("vino", 2, 2, 2);
-		Usuario usuario1 = new Usuario("pepe");
-		Usuario usuario2 = new Usuario("juan");
-		
-		usuario1.comer(alimento1, 1);
-		usuario2.comer(alimento2, 1);
-		
-		usuario1.compararCalorias(usuario2);		
+        Usuario usuario1 = new Usuario("pepe");
+        Usuario usuario2 = new Usuario("juan");
+        
+        usuario1.comer(alimento1, 1);
+        usuario2.comer(alimento2, 1);
+        
+        usuario1.compararCalorias(usuario2);        
     }
     
     /**
@@ -32,13 +32,13 @@ public class Test
     {
         Alimento alimento1 = new Alimento("pan", 1, 1, 1);
         Alimento alimento2 = new Alimento("vino", 2, 2, 2);
-		Usuario usuario1 = new Usuario("pepe");
-		Usuario usuario2 = new Usuario("juan");
-		
-		usuario1.comer(alimento1, 1);
-		usuario2.comer(alimento1, 1);
-		
-		usuario1.compararCalorias(usuario2);		
+        Usuario usuario1 = new Usuario("pepe");
+        Usuario usuario2 = new Usuario("juan");
+        
+        usuario1.comer(alimento1, 1);
+        usuario2.comer(alimento1, 1);
+        
+        usuario1.compararCalorias(usuario2);        
     }
     
     /**
@@ -48,12 +48,30 @@ public class Test
     {
         Alimento alimento1 = new Alimento("pan", 1, 1, 1);
         Alimento alimento2 = new Alimento("vino", 2, 2, 2);
-		Usuario usuario1 = new Usuario("pepe");
-		Usuario usuario2 = new Usuario("juan");
-		
-		usuario1.comer(alimento2, 1);
-		usuario2.comer(alimento1, 1);
-		
-		usuario1.compararCalorias(usuario2);		
+        Usuario usuario1 = new Usuario("pepe");
+        Usuario usuario2 = new Usuario("juan");
+        
+        usuario1.comer(alimento2, 1);
+        usuario2.comer(alimento1, 1);
+        
+        usuario1.compararCalorias(usuario2);        
     }
+    
+        /**
+     * Constructor for objects of class Test
+     */
+    public void TestVerDatosNutricionales()
+    {
+        Alimento alimento1 = new Alimento("pan", 1, 1, 1);
+        Alimento alimento2 = new Alimento("vino", 2, 2, 2);
+        Usuario usuario1 = new Usuario("pepe");
+        
+        usuario1.comer(alimento2, 1);
+        usuario1.comer(alimento1, 1);
+        
+        usuario1.verDatosNutricionales(0);
+        usuario1.verDatosNutricionales(1);
+        usuario1.verDatosNutricionales(2);
+        usuario1.verDatosNutricionales(3);
+    }        
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Write a description of class Usuario here.
@@ -17,8 +18,10 @@ public class Usuario
     private float grasas;
     //Guarda la cantidad total de calorias que ha comido el usuario
     private float calorias;
-    //
+    //Guarda el alimento mas calorico ingerido hasta el momento
     private Alimento masCalorias;
+    //Guarda la lista de los alimentos consumidos por el usuario.
+    private ArrayList<Alimento> listaAlimentosIngeridos;
 
     /**
      * Constructor for objects of class Usuario
@@ -31,6 +34,7 @@ public class Usuario
         grasas = 0;
         calorias = 0;
         masCalorias = null;
+        listaAlimentosIngeridos = new ArrayList<Alimento>();
     }
 
     /**
@@ -49,8 +53,9 @@ public class Usuario
             }
         }
         else {
-                masCalorias = nombreAlimento;
+            masCalorias = nombreAlimento;
         }
+        listaAlimentosIngeridos.add(nombreAlimento);
     }
 
     /**
@@ -117,10 +122,25 @@ public class Usuario
     public void alimentoMasCalorico()
     {
         if (masCalorias != null) {
-            System.out.println("Alimento más calórico ingerido por este usuario hasta el momento: " + masCalorias + " (" + masCalorias.getCalorias() + " calorias por cada 100 gramos)");
+            System.out.println("Alimento más calórico ingerido por este usuario hasta el momento: " + masCalorias.getNombreAlimento() + " (" + masCalorias.getCalorias() + " calorias por cada 100 gramos)");
         }
         else {
             System.out.println("Aun no ha ingerido alimentos");
         }
-    }  
+    }
+    
+    /**
+     * Permite visualizar por pantalla los datos nutricionales del alimento que el usuario ha comido en una determinada posición.
+     */
+    public void verDatosNutricionales(int index)
+    {
+        if ((index >= 1) && (index <= listaAlimentosIngeridos.size())) {
+            int cambioDeIndice = index - 1;
+            Alimento alimentoParaMostrar = listaAlimentosIngeridos.get(cambioDeIndice);
+            alimentoParaMostrar.muestraDatos();
+        }
+        else {
+            System.out.println("El indice introducido no es valido");
+        }
+    }
 }
